@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplication1.MainWindow"
+        Title="AvaloniaApplication1"
+		>
+	<StackPanel>
+		<Button Click="AddButton_Click">Add</Button>
+		<TextBlock x:Name="ExampleTextBlock" MinHeight="50"/>
+		<ListBox Items="{Binding, Mode=OneWay}" IsEnabled="True">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Grid >
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="60"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="40"/>
+						</Grid.ColumnDefinitions>
+						<Image Grid.Column="0" Margin="6" Source="{Binding IconSource}"/>
+						<Grid Grid.Column="1">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="3*"/>
+								<RowDefinition Height="2*"/>
+							</Grid.RowDefinitions>
+							<Label Grid.Row="0" Content="{Binding Name, FallbackValue=NAMMME}" FontSize="16" VerticalAlignment="Center"/>
+							<Label Grid.Row="1" Content="{Binding Description, FallbackValue=LOCATION!!!}" VerticalAlignment="Center"/>
+						</Grid>
+						<Button Grid.Column="2" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" FontSize="14" Content="❌"
+								Click="DeleteButton_Click"
+								/>
+					</Grid>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</StackPanel>
+</Window>
